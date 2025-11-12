@@ -1,0 +1,21 @@
+{
+  "name": "navigation-page",
+  "version": "1.0.0",
+  "description": "Navigation page for DiCh projects",
+  "main": "index.html",
+  "engines": {
+    "node": "24.11.1"
+  },
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve . -l 3000"
+  },
+  "keywords": [
+    "navigation",
+    "portfolio",
+    "projects"
+  ],
+  "author": "DiCh",
+  "license": "MIT"
+}
+

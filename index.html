@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-widthq" />
+  <title>DiCh Projects</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+    :root {
+      --bg: #0d1117;
+      --card-bg: #161b22;
+      --accent: #58a6ff;
+      --text: #c9d1d9;
+      --radius: 16px;
+      --transition: 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      text-align: center;
+      background: linear-gradient(90deg, var(--accent), #a371f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    a {
+      background: var(--card-bg);
+      color: var(--text);
+      text-decoration: none;
+      border-radius: var(--radius);
+      padding: 1.2rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: transform var(--transition), background var(--transition), color var(--transition);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    a:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: translateY(-4px);
+    }
+
+    a span {
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      opacity: 0.6;
+      text-align: center;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      a {
+        font-size: 0.95rem;
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2>💻</h2>
+  <h1>Мои проекты</h1>
+  <div class="links">
+    <a href="/shop" target="_blank">🛍️ Dich Shop <span>/shop</span></a>
+    <a href="/sport_nutrition" target="_blank">💪 Sport Nutrition <span>/sport_nutrition</span></a>
+    <a href="/shop/admin" target="_blank">🧭 Admin Panel <span>/shop/admin</span></a>
+    <a href="/cv" target="_blank">💼 CV <span>/cv</span></a>
+    <a href="/birthday" target="_blank">🎉 Birthday Greetings <span>/birthday</span></a>
+    <a href="/magic_player" target="_blank">🎵 Magic Player <span>/magic_player</span></a>
+    <a href="/wedding" target="_blank">💍 Wedding <span>/wedding</span></a>
+    <a href="/frontend_grade" target="_blank">📊 Frontend Grade <span>/frontend_grade</span></a>
+    <a href="/colleagues" target="_blank">👥 Colleagues <span>/colleagues</span></a>
+    <a href="/repairs_accounting" target="_blank">🧾 Repairs Accounting <span>/repairs_accounting</span></a>
+    <a href="/chalysh-ui" target="_blank">🧩 Chalysh UI <span>/chalysh-ui</span></a>
+    <a href="/promo_forge" target="_blank">🚀 Promo Forge <span>/promo_forge</span></a>
+    <a href="/threejs" target="_blank">🎮 Three.js Experiments <span>/threejs</span></a>
+  </div>
+  <footer>
+    © 2025 DiCh — All rights reserved.
+  </footer>
+</body>
+</html>
