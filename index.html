@@ -44,16 +44,40 @@
       text-align: center;
       background: linear-gradient(90deg, var(--accent), #a371f7);
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .links {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      width: 100%;
+      max-width: 1080px;
+      padding: 0 1rem;
+    }
+
+    .category {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .category-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      padding: 0.5rem 0;
+      border-bottom: 2px solid var(--card-bg);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .category-links {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1rem;
-      width: 100%;
-      max-width: 900px;
-      padding: 0 1rem;
     }
 
     a {
@@ -147,9 +171,17 @@
       }
 
       .links {
+        gap: 1.5rem;
+        padding: 0 0.5rem;
+      }
+
+      .category-links {
         grid-template-columns: 1fr;
         gap: 0.75rem;
-        padding: 0 0.5rem;
+      }
+
+      .category-title {
+        font-size: 1rem;
       }
 
       a {
@@ -185,8 +217,16 @@
       }
 
       .links {
-        gap: 0.5rem;
+        gap: 1.25rem;
         padding: 0;
+      }
+
+      .category-links {
+        gap: 0.5rem;
+      }
+
+      .category-title {
+        font-size: 0.95rem;
       }
 
       a {
@@ -228,19 +268,42 @@
   <h2>💻</h2>
   <h1 data-i18n="title">Мои проекты</h1>
   <div class="links">
-    <a href="/shop" target="_blank" data-i18n="shop">🛍️ Dich Shop <span>/shop</span></a>
-    <a href="/sport_nutrition" target="_blank" data-i18n="sport_nutrition">💪 Sport Nutrition <span>/sport_nutrition</span></a>
-    <a href="/shop/admin" target="_blank" data-i18n="admin">🧭 Admin Panel <span>/shop/admin</span></a>
-    <a href="/cv" target="_blank" data-i18n="cv">💼 CV <span>/cv</span></a>
-    <a href="/birthday" target="_blank" data-i18n="birthday">🎉 Birthday Greetings <span>/birthday</span></a>
-    <a href="/magic_player" target="_blank" data-i18n="magic_player">🎵 Magic Player <span>/magic_player</span></a>
-    <a href="/wedding" target="_blank" data-i18n="wedding">💍 Wedding <span>/wedding</span></a>
-    <a href="/frontend_grade" target="_blank" data-i18n="frontend_grade">📊 Frontend Grade <span>/frontend_grade</span></a>
-    <a href="/colleagues" target="_blank" data-i18n="colleagues">👥 Colleagues <span>/colleagues</span></a>
-    <a href="/repairs_accounting" target="_blank" data-i18n="repairs_accounting">🧾 Repairs Accounting <span>/repairs_accounting</span></a>
-    <a href="/chalysh-ui" target="_blank" data-i18n="chalysh_ui">🧩 Chalysh UI <span>/chalysh-ui</span></a>
-    <a href="/promo_forge" target="_blank" data-i18n="promo_forge">🚀 Promo Forge <span>/promo_forge</span></a>
-    <a href="/threejs" target="_blank" data-i18n="threejs">🎮 Three.js Experiments <span>/threejs</span></a>
+    <!-- Веб проекты -->
+    <div class="category">
+      <h3 class="category-title" data-i18n="category_web">🌐 Веб проекты</h3>
+      <div class="category-links">
+        <a href="/shop" target="_blank" data-i18n="shop">🛍️ Dich Shop <span>/shop</span></a>
+        <a href="/sport_nutrition" target="_blank" data-i18n="sport_nutrition">💪 Sport Nutrition <span>/sport_nutrition</span></a>
+        <a href="/shop/admin" target="_blank" data-i18n="admin">🧭 Admin Panel <span>/shop/admin</span></a>
+        <a href="/cv" target="_blank" data-i18n="cv">💼 CV <span>/cv</span></a>
+        <a href="/magic_player" target="_blank" data-i18n="magic_player">🎵 Magic Player <span>/magic_player</span></a>
+        <a href="/wedding" target="_blank" data-i18n="wedding">💍 Wedding <span>/wedding</span></a>
+        <a href="/frontend_grade" target="_blank" data-i18n="frontend_grade">📊 Frontend Grade <span>/frontend_grade</span></a>
+        <a href="/colleagues" target="_blank" data-i18n="colleagues">👥 Colleagues <span>/colleagues</span></a>
+        <a href="/repairs_accounting" target="_blank" data-i18n="repairs_accounting">🧾 Repairs Accounting <span>/repairs_accounting</span></a>
+        <a href="/chalysh-ui" target="_blank" data-i18n="chalysh_ui">🧩 Chalysh UI <span>/chalysh-ui</span></a>
+        <a href="/promo_forge" target="_blank" data-i18n="promo_forge">🚀 Promo Forge <span>/promo_forge</span></a>
+        <a href="/threejs" target="_blank" data-i18n="threejs">🎮 Three.js Experiments <span>/threejs</span></a>
+      </div>
+    </div>
+
+    <!-- Боты -->
+    <div class="category">
+      <h3 class="category-title" data-i18n="category_bots">🤖 Боты</h3>
+      <div class="category-links">
+        <a href="https://t.me/ChalyshBirthdayBot" target="_blank" data-i18n="birthday_bot">🎉 Бот для поздравлений <span>@ChalyshBirthdayBot</span></a>
+        <a href="https://t.me/GoldenQuotesBot" target="_blank" data-i18n="quotes_bot">💬 Золотые цитаты <span>@GoldenQuotesBot</span></a>
+        <a href="https://t.me/DiChShop_bot" target="_blank" data-i18n="shop_bot">🛒 Бот магазина <span>@DiChShop_bot</span></a>
+      </div>
+    </div>
+
+    <!-- API Swagger -->
+    <div class="category">
+      <h3 class="category-title" data-i18n="category_api">📡 API Swagger</h3>
+      <div class="category-links">
+        <a href="/promo_forge/api/api-docs/#" target="_blank" data-i18n="swagger">📚 Promo Forge API <span>/promo_forge/api/api-docs/#</span></a>
+      </div>
+    </div>
   </div>
   <footer data-i18n="footer">
     © 2025 DiCh — All rights reserved.
@@ -250,28 +313,41 @@
     const translations = {
       ru: {
         title: 'Мои проекты',
+        category_web: '🌐 Веб проекты',
+        category_bots: '🤖 Боты',
+        category_api: '📡 API Swagger',
         shop: '🛍️ Магазин',
         sport_nutrition: '💪 Спортивное питание',
         admin: '🧭 Админ панель магазина',
         cv: '💼 Резюме',
         birthday: '🎉 Бот для поздравлений',
+        birthday_bot: '🎉 Бот для поздравлений',
+        quotes_bot: '💬 Золотые цитаты',
+        shop_bot: '🛒 Бот магазина',
         magic_player: '🎵 Magic Player',
         wedding: '💍 Свадебные приглашения',
         frontend_grade: '📊 Frontend Grade',
         colleagues: '👥 Коллеги на работе',
         repairs_accounting: '🧾 Repairs Accounting',
-        chalysh_ui: '🧩 Chalysh UI (Демка NPM Пакет)',
+        chalysh_ui: '🧩 Chalysh UI (Демка NPM Пакета)',
         promo_forge: '🚀 Генератор промо кодов',
         threejs: '🎮 Dream Team (Three.js)',
+        swagger: '📚 Генератор промо кодов API',
         footer: '© 2025 DiCh — Все права защищены.'
       },
       en: {
         title: 'My Projects',
+        category_web: '🌐 Web Projects',
+        category_bots: '🤖 Bots',
+        category_api: '📡 API Swagger',
         shop: '🛍️ Dich Shop',
         sport_nutrition: '💪 Sport Nutrition',
         admin: '🧭 Admin Panel DiCh Shop',
         cv: '💼 CV',
         birthday: '🎉 Bot for congratulations',
+        birthday_bot: '🎉 Birthday Bot',
+        quotes_bot: '💬 Golden Quotes',
+        shop_bot: '🛒 Shop Bot',
         magic_player: '🎵 Magic Player',
         wedding: '💍 Wedding invitations',
         frontend_grade: '📊 Frontend Grade',
@@ -280,6 +356,7 @@
         chalysh_ui: '🧩 Chalysh UI (Demo for NPM package)',
         promo_forge: '🚀 Promo Forge',
         threejs: '🎮 Dream Team (Three.js)',
+        swagger: '📚 Promo Forge API',
         footer: '© 2025 DiCh — All rights reserved.'
       }
     };
@@ -304,6 +381,9 @@
             const span = element.querySelector('span');
             const path = span ? span.textContent : '';
             element.innerHTML = translations[lang][key] + (span ? ` <span>${path}</span>` : '');
+          } else if (element.tagName === 'H3') {
+            // Для заголовков категорий
+            element.textContent = translations[lang][key];
           } else {
             element.textContent = translations[lang][key];
           }
