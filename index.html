@@ -264,7 +264,7 @@
     <button id="lang-ru" class="active" onclick="switchLanguage('ru')">RU</button>
     <button id="lang-en" onclick="switchLanguage('en')">EN</button>
   </div>
-  
+
   <h2>💻</h2>
   <h1 data-i18n="title">Мои проекты</h1>
   <div class="links">
@@ -284,7 +284,7 @@
         <a href="/chalysh-ui" target="_blank" data-i18n="chalysh_ui">🧩 Chalysh UI <span>/chalysh-ui</span></a>
         <a href="/promo_forge" target="_blank" data-i18n="promo_forge">🚀 Promo Forge <span>/promo_forge</span></a>
         <a href="/threejs" target="_blank" data-i18n="threejs">🎮 Three.js Experiments <span>/threejs</span></a>
-        <a href="/chess_statistics" target="_blank" data-i18n="chessStatistics">♙ Chess statistics <span>/chess_statistics</span></a>
+        <a href="/chess_statistics" target="_blank" data-i18n="chess_statistics">♙ Chess statistics <span>/chess_statistics</span></a>
       </div>
     </div>
 
@@ -302,9 +302,13 @@
     <div class="category">
       <h3 class="category-title" data-i18n="category_api">📡 API Swagger</h3>
       <div class="category-links">
-        <a href="/promo_forge/api/api-docs/#" target="_blank" data-i18n="swagger">📚 Promo Forge API <span>/promo_forge/api/api-docs/#</span></a>
+        <a href="/promo_forge/api/docs/" target="_blank" data-i18n="promo_forge_swagger">📚 Promo Forge API <span>/promo_forge/api/docs/</span></a>
+    </div>
+      <div class="category-links">
+        <a href="/chess_statistics/api/docs/" target="_blank" data-i18n="chess_statistics_swagger">📚 Chess statistics API <span>/chess_statistics/api/docs/</span></a>
       </div>
     </div>
+
   </div>
   <footer data-i18n="footer">
     © 2025 DiCh — All rights reserved.
@@ -333,8 +337,9 @@
         chalysh_ui: '🧩 Chalysh UI (Демка NPM Пакета)',
         promo_forge: '🚀 Генератор промо кодов',
         threejs: '🎮 Dream Team (Three.js)',
-        chessStatistics: '♙ Статистика шахматных партий',
-        swagger: '📚 Генератор промо кодов API',
+        chess_statistics: '♙ Статистика шахматных партий',
+        promo_forge_swagger: '📚 Генератор промо кодов API',
+        chess_statistics_swagger: '📚 Статистика шахматных партий API',
         footer: '© 2025 DiCh — Все права защищены.'
       },
       en: {
@@ -358,8 +363,9 @@
         chalysh_ui: '🧩 Chalysh UI (Demo for NPM package)',
         promo_forge: '🚀 Promo Forge',
         threejs: '🎮 Dream Team (Three.js)',
-        chessStatistics: '♙ Chess statistics',
-        swagger: '📚 Promo Forge API',
+        chess_statistics: '♙ Chess statistics',
+        promo_forge_swagger: '📚 Promo Forge API',
+        chess_statistics_swagger: '📚 Chess statistics API',
         footer: '© 2025 DiCh — All rights reserved.'
       }
     };
@@ -367,14 +373,14 @@
     function switchLanguage(lang) {
       // Сохраняем выбор языка
       localStorage.setItem('language', lang);
-      
+
       // Обновляем атрибут lang у html
       document.documentElement.lang = lang;
-      
+
       // Обновляем активную кнопку
       document.getElementById('lang-ru').classList.toggle('active', lang === 'ru');
       document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-      
+
       // Обновляем все тексты
       document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
