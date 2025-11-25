@@ -9,13 +9,38 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
+    /* Dark theme (default) */
     :root {
+      --radius: 16px;
+      --transition: 0.3s ease;
       --bg: #0d1117;
       --card-bg: #161b22;
       --accent: #58a6ff;
       --text: #c9d1d9;
-      --radius: 16px;
-      --transition: 0.3s ease;
+      --border: rgba(255, 255, 255, 0.1);
+      --shadow: rgba(0, 0, 0, 0.3);
+    }
+
+    /* Light theme */
+    [data-theme="light"] {
+      --bg: #f5f7fa;
+      --card-bg: #ffffff;
+      --accent: #2563eb;
+      --text: #1f2937;
+      --border: rgba(0, 0, 0, 0.1);
+      --shadow: rgba(0, 0, 0, 0.1);
+    }
+
+    /* Auto theme based on system preference */
+    @media (prefers-color-scheme: light) {
+      :root:not([data-theme]) {
+        --bg: #f5f7fa;
+        --card-bg: #ffffff;
+        --accent: #2563eb;
+        --text: #1f2937;
+        --border: rgba(0, 0, 0, 0.1);
+        --shadow: rgba(0, 0, 0, 0.1);
+      }
     }
 
     * {
@@ -69,7 +94,7 @@
       color: var(--accent);
       margin-bottom: 0.5rem;
       padding: 0.5rem 0;
-      border-bottom: 2px solid var(--card-bg);
+      border-bottom: 2px solid var(--border);
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
@@ -92,7 +117,8 @@
       justify-content: space-between;
       align-items: center;
       transition: transform var(--transition), background var(--transition), color var(--transition);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 10px var(--shadow);
+      border: 1px solid var(--border);
     }
 
     a:hover {
@@ -115,8 +141,46 @@
       background: var(--card-bg);
       padding: 0.5rem;
       border-radius: var(--radius);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 10px var(--shadow);
       z-index: 1000;
+      border: 1px solid var(--border);
+    }
+
+    .theme-switcher {
+      position: fixed;
+      top: 1rem;
+      right: calc(1rem + 140px);
+      background: var(--card-bg);
+      padding: 0.5rem;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 10px var(--shadow);
+      z-index: 1000;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .theme-switcher button {
+      background: transparent;
+      border: none;
+      color: var(--text);
+      padding: 0.5rem;
+      border-radius: calc(var(--radius) - 4px);
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: all var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+    }
+
+    .theme-switcher button:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: rotate(15deg);
     }
 
     .language-switcher button {
@@ -160,6 +224,12 @@
         padding: 0.4rem;
       }
 
+      .theme-switcher {
+        top: 0.5rem;
+        right: calc(0.5rem + 120px);
+        padding: 0.4rem;
+      }
+
       .language-switcher button {
         padding: 0.4rem 0.8rem;
         font-size: 0.85rem;
@@ -199,6 +269,18 @@
         top: 0.5rem;
         right: 0.5rem;
         padding: 0.3rem;
+      }
+
+      .theme-switcher {
+        top: 0.5rem;
+        right: calc(0.5rem + 90px);
+        padding: 0.3rem;
+      }
+
+      .theme-switcher button {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
       }
 
       .language-switcher button {
@@ -260,6 +342,9 @@
   </style>
 </head>
 <body>
+  <div class="theme-switcher">
+    <button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">🌓</button>
+  </div>
   <div class="language-switcher">
     <button id="lang-ru" class="active" onclick="switchLanguage('ru')">RU</button>
     <button id="lang-en" onclick="switchLanguage('en')">EN</button>
@@ -407,10 +492,73 @@
       return lang.toLowerCase().startsWith('en') ? 'en' : 'ru';
     }
 
-    // Загружаем сохраненный язык при загрузке страницы
+    // Определяем тему системы
+    function getSystemTheme() {
+      return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+
+    // Переключаем тему
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const systemTheme = getSystemTheme();
+      
+      let newTheme;
+      if (!currentTheme) {
+        // Если тема не установлена, используем противоположную системной
+        newTheme = systemTheme === 'light' ? 'dark' : 'light';
+      } else {
+        // Переключаем между light и dark
+        newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      }
+      
+      setTheme(newTheme);
+    }
+
+    // Устанавливаем тему
+    function setTheme(theme) {
+      if (theme === 'auto' || !theme) {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.removeItem('theme');
+      } else {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+      }
+      
+      // Обновляем иконку кнопки
+      updateThemeIcon();
+    }
+
+    // Обновляем иконку темы
+    function updateThemeIcon() {
+      const themeToggle = document.getElementById('theme-toggle');
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const systemTheme = getSystemTheme();
+      const activeTheme = currentTheme || systemTheme;
+      
+      themeToggle.textContent = activeTheme === 'light' ? '🌙' : '☀️';
+    }
+
+    // Загружаем сохраненный язык и тему при загрузке страницы
     document.addEventListener('DOMContentLoaded', () => {
       const savedLang = localStorage.getItem('language') || getBrowserLanguage();
       switchLanguage(savedLang);
+      
+      // Загружаем сохраненную тему или используем системную
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        setTheme(savedTheme);
+      } else {
+        // Не устанавливаем data-theme, чтобы использовалась системная тема
+        updateThemeIcon();
+      }
+    });
+
+    // Слушаем изменения системной темы
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => {
+      // Обновляем иконку только если тема не установлена вручную
+      if (!document.documentElement.getAttribute('data-theme')) {
+        updateThemeIcon();
+      }
     });
   </script>
 </body>
