@@ -135,6 +135,49 @@
       opacity: 0.7;
     }
 
+    .library-group {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 10px var(--shadow);
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+
+    .library-group:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px var(--shadow);
+    }
+
+    .library-group-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .library-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .library-links a {
+      background: transparent;
+      padding: 0.75rem 1rem;
+      margin: 0;
+      border: 1px solid var(--border);
+      font-size: 0.95rem;
+    }
+
+    .library-links a:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
     .language-switcher {
       position: fixed;
       top: 1rem;
@@ -344,6 +387,20 @@
         margin-top: 0.25rem;
       }
 
+      .library-group {
+        padding: 1rem;
+      }
+
+      .library-group-title {
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .library-links a {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.9rem;
+      }
+
       footer {
         font-size: 0.75rem;
         margin-top: 1.5rem;
@@ -407,7 +464,6 @@
         <a href="/frontend_grade" target="_blank" data-i18n="frontend_grade">📊 Frontend Grade <span>/frontend_grade</span></a>
         <a href="/colleagues" target="_blank" data-i18n="colleagues">👥 Colleagues <span>/colleagues</span></a>
         <a href="/repairs_accounting" target="_blank" data-i18n="repairs_accounting">🧾 Repairs Accounting <span>/repairs_accounting</span></a>
-        <a href="/chalysh-ui" target="_blank" data-i18n="chalysh_ui">🧩 Chalysh UI <span>/chalysh-ui</span></a>
         <a href="/promo_forge" target="_blank" data-i18n="promo_forge">🚀 Promo Forge <span>/promo_forge</span></a>
         <a href="/threejs" target="_blank" data-i18n="threejs">🎮 Three.js Experiments <span>/threejs</span></a>
         <a href="/chess_statistics" target="_blank" data-i18n="chess_statistics">♙ Chess statistics <span>/chess_statistics</span></a>
@@ -435,6 +491,20 @@
       </div>
     </div>
 
+    <!-- NPM библиотеки -->
+    <div class="category">
+      <h3 class="category-title" data-i18n="category_npm">📦 NPM библиотеки</h3>
+      <div class="category-links">
+        <div class="library-group">
+          <div class="library-group-title" data-i18n="chalysh_ui_title">🧩 Chalysh UI</div>
+          <div class="library-links">
+            <a href="https://www.npmjs.com/package/chalysh-ui" target="_blank" data-i18n="chalysh_ui_package">📦 Пакет <span>npmjs.com/package/chalysh-ui</span></a>
+            <a href="/chalysh-ui" target="_blank" data-i18n="chalysh_ui_demo">🎨 Демо <span>/chalysh-ui</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
   <footer data-i18n="footer">
     © 2025 DiCh — All rights reserved.
@@ -445,6 +515,7 @@
       ru: {
         title: 'Мои проекты',
         category_web: '🌐 Веб проекты',
+        category_npm: '📦 NPM библиотеки',
         category_bots: '🤖 Боты',
         category_api: '📡 API Swagger',
         shop: '🛍️ Магазин',
@@ -460,7 +531,9 @@
         frontend_grade: '📊 Frontend Grade',
         colleagues: '👥 Коллеги на работе',
         repairs_accounting: '🧾 Repairs Accounting',
-        chalysh_ui: '🧩 Chalysh UI (Демка NPM Пакета)',
+        chalysh_ui_title: '🧩 Chalysh UI',
+        chalysh_ui_package: '🛍️ Пакет',
+        chalysh_ui_demo: '🪧 Демо',
         promo_forge: '🚀 Генератор промо кодов',
         threejs: '🎮 Dream Team (Three.js)',
         chess_statistics: '♟️ Статистика шахматных партий',
@@ -471,6 +544,7 @@
       en: {
         title: 'My Projects',
         category_web: '🌐 Web Projects',
+        category_npm: '📦 NPM Libraries',
         category_bots: '🤖 Bots',
         category_api: '📡 API Swagger',
         shop: '🛍️ Dich Shop',
@@ -486,7 +560,9 @@
         frontend_grade: '📊 Frontend Grade',
         colleagues: '👥 Colleagues at work',
         repairs_accounting: '🧾 Repairs Accounting',
-        chalysh_ui: '🧩 Chalysh UI (Demo for NPM package)',
+        chalysh_ui_title: '🧩 Chalysh UI',
+        chalysh_ui_package: '📦 Package',
+        chalysh_ui_demo: '🎨 Demo',
         promo_forge: '🚀 Promo Forge',
         threejs: '🎮 Dream Team (Three.js)',
         chess_statistics: '♟️ Chess statistics',
@@ -516,8 +592,8 @@
             const span = element.querySelector('span');
             const path = span ? span.textContent : '';
             element.innerHTML = translations[lang][key] + (span ? ` <span>${path}</span>` : '');
-          } else if (element.tagName === 'H3') {
-            // Для заголовков категорий
+          } else if (element.tagName === 'H3' || element.classList.contains('library-group-title')) {
+            // Для заголовков категорий и библиотек
             element.textContent = translations[lang][key];
           } else {
             element.textContent = translations[lang][key];
