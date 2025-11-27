@@ -1,682 +1,717 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-  <title>DiCh Projects</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"/>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+    <title>DiCh Projects</title>
+    <meta name="description"
+          content="Navigation page for DiCh projects. Explore web applications, bots, and NPM libraries created by Dmitrii Chalysh."/>
+    <meta name="keywords" content="DiCh, Projects, Portfolio, Web Development, Bots, NPM, Chalysh UI, Magic Player"/>
+    <meta name="author" content="DiCh"/>
 
-    /* Dark theme (default) */
-    :root {
-      --radius: 16px;
-      --transition: 0.3s ease;
-      --bg: #0d1117;
-      --card-bg: #161b22;
-      --accent: #58a6ff;
-      --text: #c9d1d9;
-      --border: rgba(255, 255, 255, 0.1);
-      --shadow: rgba(0, 0, 0, 0.3);
-    }
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="DiCh Projects"/>
+    <meta property="og:description"
+          content="Navigation page for DiCh projects. Explore web applications, bots, and NPM libraries."/>
+    <meta property="og:image" content="/favicon.ico"/>
 
-    /* Light theme */
-    [data-theme="light"] {
-      --bg: #f5f7fa;
-      --card-bg: #ffffff;
-      --accent: #2563eb;
-      --text: #1f2937;
-      --border: rgba(0, 0, 0, 0.1);
-      --shadow: rgba(0, 0, 0, 0.1);
-    }
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary"/>
+    <meta property="twitter:title" content="DiCh Projects"/>
+    <meta property="twitter:description"
+          content="Navigation page for DiCh projects. Explore web applications, bots, and NPM libraries."/>
+    <meta property="twitter:image" content="/favicon.ico"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
-    /* Auto theme based on system preference */
-    @media (prefers-color-scheme: light) {
-      :root:not([data-theme]) {
-        --bg: #f5f7fa;
-        --card-bg: #ffffff;
-        --accent: #2563eb;
-        --text: #1f2937;
-        --border: rgba(0, 0, 0, 0.1);
-        --shadow: rgba(0, 0, 0, 0.1);
-      }
-    }
+        /* Dark theme (default) */
+        :root {
+            --radius: 16px;
+            --transition: 0.3s ease;
+            --bg: #0d1117;
+            --card-bg: #161b22;
+            --accent: #58a6ff;
+            --text: #c9d1d9;
+            --border: rgba(255, 255, 255, 0.1);
+            --shadow: rgba(0, 0, 0, 0.3);
+        }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        /* Light theme */
+        [data-theme="light"] {
+            --bg: #f5f7fa;
+            --card-bg: #ffffff;
+            --accent: #2563eb;
+            --text: #1f2937;
+            --border: rgba(0, 0, 0, 0.1);
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 2rem 1rem;
-      overflow-x: hidden;
-      transition: background-color var(--transition), color var(--transition);
-    }
+        /* Auto theme based on system preference */
+        @media (prefers-color-scheme: light) {
+            :root:not([data-theme]) {
+                --bg: #f5f7fa;
+                --card-bg: #ffffff;
+                --accent: #2563eb;
+                --text: #1f2937;
+                --border: rgba(0, 0, 0, 0.1);
+                --shadow: rgba(0, 0, 0, 0.1);
+            }
+        }
 
-    h1 {
-      font-size: 2rem;
-      font-weight: 600;
-      margin-bottom: 2rem;
-      text-align: center;
-      background: linear-gradient(90deg, var(--accent), #a371f7);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      transition: background var(--transition);
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .links {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      width: 100%;
-      max-width: 1080px;
-      padding: 0 1rem;
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            overflow-x: hidden;
+            transition: background-color var(--transition), color var(--transition);
+        }
 
-    .category {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-align: center;
+            background: linear-gradient(90deg, var(--accent), #a371f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: background var(--transition);
+        }
 
-    .category-title {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-      padding: 0.5rem 0;
-      border-bottom: 2px solid var(--border);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      transition: color var(--transition), border-bottom-color var(--transition);
-    }
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            width: 100%;
+            max-width: 1080px;
+            padding: 0 1rem;
+        }
 
-    .category-links {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1rem;
-    }
+        .category {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
 
-    a {
-      background: var(--card-bg);
-      color: var(--text);
-      text-decoration: none;
-      border-radius: var(--radius);
-      padding: 1.2rem 1.5rem;
-      font-size: 1rem;
-      font-weight: 500;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: transform var(--transition), background-color var(--transition), color var(--transition), border-color var(--transition), box-shadow var(--transition);
-      box-shadow: 0 4px 10px var(--shadow);
-      border: 1px solid var(--border);
-    }
+        .category-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid var(--border);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color var(--transition), border-bottom-color var(--transition);
+        }
 
-    a:hover {
-      background: var(--accent);
-      color: #fff;
-      transform: translateY(-4px);
-    }
+        .category-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+        }
 
-    a span {
-      font-size: 0.9rem;
-      opacity: 0.7;
-    }
+        a {
+            background: var(--card-bg);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: var(--radius);
+            padding: 1.2rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform var(--transition), background-color var(--transition), color var(--transition), border-color var(--transition), box-shadow var(--transition);
+            box-shadow: 0 4px 10px var(--shadow);
+            border: 1px solid var(--border);
+        }
 
-    .library-group {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      padding: 1.2rem;
-      border: 1px solid var(--border);
-      box-shadow: 0 4px 10px var(--shadow);
-      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), background-color var(--transition);
-    }
+        a:hover {
+            background: var(--accent);
+            color: #fff;
+            transform: translateY(-4px);
+        }
 
-    .library-group:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 15px var(--shadow);
-    }
+        a span {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
 
-    .library-group-title {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
+        .library-group {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 1.2rem;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 10px var(--shadow);
+            transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), background-color var(--transition);
+        }
 
-    .library-links {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
+        .library-group:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px var(--shadow);
+        }
 
-    .library-links a {
-      background: transparent;
-      padding: 0.75rem 1rem;
-      margin: 0;
-      border: 1px solid var(--border);
-      font-size: 0.95rem;
-    }
+        .library-group-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
-    .library-links a:hover {
-      background: var(--accent);
-      border-color: var(--accent);
-    }
+        .library-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
 
-    .language-switcher {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      display: flex;
-      gap: 0.5rem;
-      background: var(--card-bg);
-      padding: 0.5rem;
-      border-radius: var(--radius);
-      box-shadow: 0 4px 10px var(--shadow);
-      z-index: 1000;
-      border: 1px solid var(--border);
-      transition: background-color var(--transition), border-color var(--transition), box-shadow var(--transition);
-    }
+        .library-links a {
+            background: transparent;
+            padding: 0.75rem 1rem;
+            margin: 0;
+            border: 1px solid var(--border);
+            font-size: 0.95rem;
+        }
 
-    .theme-switcher {
-      position: fixed;
-      top: 1rem;
-      right: calc(1rem + 140px);
-      background: var(--card-bg);
-      padding: 0.5rem;
-      border-radius: var(--radius);
-      box-shadow: 0 4px 10px var(--shadow);
-      z-index: 1000;
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background-color var(--transition), border-color var(--transition), box-shadow var(--transition);
-    }
+        .library-links a:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
 
-    .theme-switcher button {
-      background: transparent;
-      border: none;
-      color: var(--text);
-      padding: 0.5rem;
-      border-radius: calc(var(--radius) - 4px);
-      cursor: pointer;
-      font-size: 1.2rem;
-      transition: background-color var(--transition), color var(--transition), transform var(--transition);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-    }
+        .language-switcher {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            background: var(--card-bg);
+            padding: 0.5rem;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 10px var(--shadow);
+            z-index: 1000;
+            border: 1px solid var(--border);
+            transition: background-color var(--transition), border-color var(--transition), box-shadow var(--transition);
+        }
 
-    .theme-switcher button:hover {
-      background: var(--accent);
-      color: #fff;
-      transform: rotate(15deg);
-    }
+        .theme-switcher {
+            position: fixed;
+            top: 1rem;
+            right: calc(1rem + 140px);
+            background: var(--card-bg);
+            padding: 0.5rem;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 10px var(--shadow);
+            z-index: 1000;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color var(--transition), border-color var(--transition), box-shadow var(--transition);
+        }
 
-    .language-switcher button {
-      background: transparent;
-      border: none;
-      color: var(--text);
-      padding: 0.5rem 1rem;
-      border-radius: calc(var(--radius) - 4px);
-      cursor: pointer;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: background-color var(--transition), color var(--transition);
-      font-family: 'Inter', sans-serif;
-    }
+        .theme-switcher button {
+            background: transparent;
+            border: none;
+            color: var(--text);
+            padding: 0.5rem;
+            border-radius: calc(var(--radius) - 4px);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background-color var(--transition), color var(--transition), transform var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+        }
 
-    .language-switcher button:hover {
-      background: var(--accent);
-      color: #fff;
-    }
+        .theme-switcher button:hover {
+            background: var(--accent);
+            color: #fff;
+            transform: rotate(15deg);
+        }
 
-    .language-switcher button.active {
-      background: var(--accent);
-      color: #fff;
-    }
+        .language-switcher button {
+            background: transparent;
+            border: none;
+            color: var(--text);
+            padding: 0.5rem 1rem;
+            border-radius: calc(var(--radius) - 4px);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background-color var(--transition), color var(--transition);
+            font-family: 'Inter', sans-serif;
+        }
 
-    footer {
-      margin-top: 2rem;
-      font-size: 0.8rem;
-      opacity: 0.6;
-      text-align: center;
-      transition: color var(--transition);
-    }
+        .language-switcher button:hover {
+            background: var(--accent);
+            color: #fff;
+        }
 
-    @media (max-width: 768px) {
-      body {
-        padding: 1.5rem 0.5rem;
-      }
+        .language-switcher button.active {
+            background: var(--accent);
+            color: #fff;
+        }
 
-      .language-switcher {
-        top: 0.5rem;
-        right: 0.5rem;
-        padding: 0.4rem;
-        gap: 0.4rem;
-      }
+        footer {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            opacity: 0.6;
+            text-align: center;
+            transition: color var(--transition);
+        }
 
-      .theme-switcher {
-        top: 0.5rem;
-        right: calc(0.5rem + 135px);
-        padding: 0.4rem;
-      }
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 0.5rem;
+            }
 
-      .language-switcher button {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.85rem;
-      }
+            .language-switcher {
+                top: 0.5rem;
+                right: 0.5rem;
+                padding: 0.4rem;
+                gap: 0.4rem;
+            }
 
-      .theme-switcher button {
-        width: auto;
-        height: auto;
-        padding: 0.4rem 0.8rem;
-        font-size: 0.85rem;
-      }
+            .theme-switcher {
+                top: 0.5rem;
+                right: calc(0.5rem + 135px);
+                padding: 0.4rem;
+            }
 
-      h1 {
-        font-size: 1.75rem;
-        margin-bottom: 1.5rem;
-      }
+            .language-switcher button {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.85rem;
+            }
 
-      .links {
-        gap: 1.5rem;
-        padding: 0 0.5rem;
-      }
+            .theme-switcher button {
+                width: auto;
+                height: auto;
+                padding: 0.4rem 0.8rem;
+                font-size: 0.85rem;
+            }
 
-      .category-links {
-        grid-template-columns: 1fr;
-        gap: 0.75rem;
-      }
+            h1 {
+                font-size: 1.75rem;
+                margin-bottom: 1.5rem;
+            }
 
-      .category-title {
-        font-size: 1rem;
-      }
+            .links {
+                gap: 1.5rem;
+                padding: 0 0.5rem;
+            }
 
-      a {
-        font-size: 0.95rem;
-        padding: 1rem 1.2rem;
-      }
-    }
+            .category-links {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
 
-    @media (max-width: 480px) {
-      body {
-        padding: 1rem 0.5rem;
-      }
+            .category-title {
+                font-size: 1rem;
+            }
 
-      .language-switcher {
-        top: 0.5rem;
-        right: 0.5rem;
-        padding: 0.3rem;
-        gap: 0.3rem;
-      }
+            a {
+                font-size: 0.95rem;
+                padding: 1rem 1.2rem;
+            }
+        }
 
-      .theme-switcher {
-        top: 0.5rem;
-        right: calc(0.5rem + 105px);
-        padding: 0.3rem;
-      }
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem 0.5rem;
+            }
 
-      .language-switcher button {
-        padding: 0.3rem 0.6rem;
-        font-size: 0.8rem;
-      }
+            .language-switcher {
+                top: 0.5rem;
+                right: 0.5rem;
+                padding: 0.3rem;
+                gap: 0.3rem;
+            }
 
-      .theme-switcher button {
-        width: auto;
-        height: auto;
-        padding: 0.3rem 0.6rem;
-        font-size: 0.8rem;
-      }
+            .theme-switcher {
+                top: 0.5rem;
+                right: calc(0.5rem + 105px);
+                padding: 0.3rem;
+            }
 
-      .language-switcher button {
-        padding: 0.3rem 0.6rem;
-        font-size: 0.8rem;
-      }
+            .language-switcher button {
+                padding: 0.3rem 0.6rem;
+                font-size: 0.8rem;
+            }
 
-      h1 {
-        font-size: 1.5rem;
-        margin-bottom: 1.25rem;
-      }
+            .theme-switcher button {
+                width: auto;
+                height: auto;
+                padding: 0.3rem 0.6rem;
+                font-size: 0.8rem;
+            }
 
-      h2 {
-        font-size: 1.2rem;
-        margin-bottom: 0.5rem;
-      }
+            .language-switcher button {
+                padding: 0.3rem 0.6rem;
+                font-size: 0.8rem;
+            }
 
-      .links {
-        gap: 1.25rem;
-        padding: 0;
-      }
+            h1 {
+                font-size: 1.5rem;
+                margin-bottom: 1.25rem;
+            }
 
-      .category-links {
-        gap: 0.5rem;
-      }
+            h2 {
+                font-size: 1.2rem;
+                margin-bottom: 0.5rem;
+            }
 
-      .category-title {
-        font-size: 0.95rem;
-      }
+            .links {
+                gap: 1.25rem;
+                padding: 0;
+            }
 
-      a {
-        font-size: 0.9rem;
-        padding: 0.9rem 1rem;
-        flex-wrap: wrap;
-      }
+            .category-links {
+                gap: 0.5rem;
+            }
 
-      a span {
-        font-size: 0.8rem;
-        width: 100%;
-        margin-top: 0.25rem;
-      }
+            .category-title {
+                font-size: 0.95rem;
+            }
 
-      .library-group {
-        padding: 1rem;
-      }
+            a {
+                font-size: 0.9rem;
+                padding: 0.9rem 1rem;
+                flex-wrap: wrap;
+            }
 
-      .library-group-title {
-        font-size: 0.95rem;
-        margin-bottom: 0.5rem;
-      }
+            a span {
+                font-size: 0.8rem;
+                width: 100%;
+                margin-top: 0.25rem;
+            }
 
-      .library-links a {
-        padding: 0.6rem 0.8rem;
-        font-size: 0.9rem;
-      }
+            .library-group {
+                padding: 1rem;
+            }
 
-      footer {
-        font-size: 0.75rem;
-        margin-top: 1.5rem;
-      }
-    }
+            .library-group-title {
+                font-size: 0.95rem;
+                margin-bottom: 0.5rem;
+            }
 
-    @media (max-width: 360px) {
-      h1 {
-        font-size: 1.3rem;
-      }
+            .library-links a {
+                padding: 0.6rem 0.8rem;
+                font-size: 0.9rem;
+            }
 
-      a {
-        font-size: 0.85rem;
-        padding: 0.8rem;
-      }
+            footer {
+                font-size: 0.75rem;
+                margin-top: 1.5rem;
+            }
+        }
 
-      .language-switcher {
-        padding: 0.25rem;
-        gap: 0.25rem;
-      }
+        @media (max-width: 360px) {
+            h1 {
+                font-size: 1.3rem;
+            }
 
-      .theme-switcher {
-        right: calc(0.5rem + 100px);
-        padding: 0.25rem;
-      }
+            a {
+                font-size: 0.85rem;
+                padding: 0.8rem;
+            }
 
-      .language-switcher button {
-        padding: 0.25rem 0.5rem;
-        font-size: 0.75rem;
-      }
+            .language-switcher {
+                padding: 0.25rem;
+                gap: 0.25rem;
+            }
 
-      .theme-switcher button {
-        padding: 0.25rem 0.5rem;
-        font-size: 0.75rem;
-      }
-    }
-  </style>
+            .theme-switcher {
+                right: calc(0.5rem + 100px);
+                padding: 0.25rem;
+            }
+
+            .language-switcher button {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.75rem;
+            }
+
+            .theme-switcher button {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <div class="theme-switcher">
+<div class="theme-switcher">
     <button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">🌓</button>
-  </div>
-  <div class="language-switcher">
+</div>
+<div class="language-switcher">
     <button id="lang-ru" class="active" onclick="switchLanguage('ru')">RU</button>
     <button id="lang-en" onclick="switchLanguage('en')">EN</button>
-  </div>
+</div>
 
-  <h2>💻</h2>
-  <h1 data-i18n="title">Мои проекты</h1>
-  <div class="links">
+<h2>💻</h2>
+<h1 data-i18n="title">Мои проекты</h1>
+<div class="links">
     <!-- Веб проекты -->
     <div class="category">
-      <h3 class="category-title" data-i18n="category_web">🌐 Веб проекты</h3>
-      <div class="category-links">
-        <a href="/shop" target="_blank" data-i18n="shop">🛍️ Dich Shop <span>/shop</span></a>
-        <a href="/sport_nutrition" target="_blank" data-i18n="sport_nutrition">💪 Sport Nutrition <span>/sport_nutrition</span></a>
-        <a href="/shop/admin" target="_blank" data-i18n="admin">🧭 Admin Panel <span>/shop/admin</span></a>
-        <a href="/cv" target="_blank" data-i18n="cv">💼 CV <span>/cv</span></a>
-        <a href="/magic_player" target="_blank" data-i18n="magic_player">🎵 Magic Player <span>/magic_player</span></a>
-        <a href="/wedding" target="_blank" data-i18n="wedding">💍 Wedding <span>/wedding</span></a>
-        <a href="/frontend_grade" target="_blank" data-i18n="frontend_grade">📊 Frontend Grade <span>/frontend_grade</span></a>
-        <a href="/colleagues" target="_blank" data-i18n="colleagues">👥 Colleagues <span>/colleagues</span></a>
-        <a href="/repairs_accounting" target="_blank" data-i18n="repairs_accounting">🧾 Repairs Accounting <span>/repairs_accounting</span></a>
-        <a href="/promo_forge" target="_blank" data-i18n="promo_forge">🚀 Promo Forge <span>/promo_forge</span></a>
-        <a href="/threejs" target="_blank" data-i18n="threejs">🎮 Three.js Experiments <span>/threejs</span></a>
-        <a href="/chess_statistics" target="_blank" data-i18n="chess_statistics">♙ Chess statistics <span>/chess_statistics</span></a>
-      </div>
+        <h3 class="category-title" data-i18n="category_web">🌐 Веб проекты</h3>
+        <div class="category-links">
+            <a href="/shop" target="_blank" data-i18n="shop">🛍️ Dich Shop <span>/shop</span></a>
+            <a href="/sport_nutrition" target="_blank" data-i18n="sport_nutrition">💪 Sport Nutrition
+                <span>/sport_nutrition</span></a>
+            <a href="/shop/admin" target="_blank" data-i18n="admin">🧭 Admin Panel <span>/shop/admin</span></a>
+            <a href="/cv" target="_blank" data-i18n="cv">💼 CV <span>/cv</span></a>
+            <a href="/magic_player" target="_blank" data-i18n="magic_player">🎵 Magic Player
+                <span>/magic_player</span></a>
+            <a href="/wedding" target="_blank" data-i18n="wedding">💍 Wedding <span>/wedding</span></a>
+            <a href="/frontend_grade" target="_blank" data-i18n="frontend_grade">📊 Frontend Grade
+                <span>/frontend_grade</span></a>
+            <a href="/colleagues" target="_blank" data-i18n="colleagues">👥 Colleagues <span>/colleagues</span></a>
+            <a href="/repairs_accounting" target="_blank" data-i18n="repairs_accounting">🧾 Repairs Accounting
+                <span>/repairs_accounting</span></a>
+            <a href="/promo_forge" target="_blank" data-i18n="promo_forge">🚀 Promo Forge <span>/promo_forge</span></a>
+            <a href="/threejs" target="_blank" data-i18n="threejs">🎮 Three.js Experiments <span>/threejs</span></a>
+            <a href="/chess_statistics" target="_blank" data-i18n="chess_statistics">♙ Chess statistics
+                <span>/chess_statistics</span></a>
+        </div>
     </div>
 
     <!-- Боты -->
     <div class="category">
-      <h3 class="category-title" data-i18n="category_bots">🤖 Боты</h3>
-      <div class="category-links">
-        <a href="https://t.me/ChalyshBirthdayBot" target="_blank" data-i18n="birthday_bot">🎉 Бот для поздравлений <span>@ChalyshBirthdayBot</span></a>
-        <a href="https://t.me/GoldenQuotesBot" target="_blank" data-i18n="quotes_bot">💬 Золотые цитаты <span>@GoldenQuotesBot</span></a>
-        <a href="https://t.me/DiChShop_bot" target="_blank" data-i18n="shop_bot">🛒 Бот магазина <span>@DiChShop_bot</span></a>
-      </div>
+        <h3 class="category-title" data-i18n="category_bots">🤖 Боты</h3>
+        <div class="category-links">
+            <a href="https://t.me/ChalyshBirthdayBot" target="_blank" data-i18n="birthday_bot">🎉 Бот для поздравлений
+                <span>@ChalyshBirthdayBot</span></a>
+            <a href="https://t.me/GoldenQuotesBot" target="_blank" data-i18n="quotes_bot">💬 Золотые цитаты
+                <span>@GoldenQuotesBot</span></a>
+            <a href="https://t.me/DiChShop_bot" target="_blank" data-i18n="shop_bot">🛒 Бот магазина
+                <span>@DiChShop_bot</span></a>
+        </div>
     </div>
 
     <!-- API Swagger -->
     <div class="category">
-      <h3 class="category-title" data-i18n="category_api">📡 API Swagger</h3>
-      <div class="category-links">
-        <a href="/promo_forge/api/docs/" target="_blank" data-i18n="promo_forge_swagger">📚 Promo Forge API <span>/promo_forge/api/docs/</span></a>
-    </div>
-      <div class="category-links">
-        <a href="/chess_statistics/api/docs/" target="_blank" data-i18n="chess_statistics_swagger">📚 Chess statistics API <span>/chess_statistics/api/docs/</span></a>
-      </div>
+        <h3 class="category-title" data-i18n="category_api">📡 API Swagger</h3>
+        <div class="category-links">
+            <a href="/promo_forge/api/docs/" target="_blank" data-i18n="promo_forge_swagger">📚 Promo Forge API
+                <span>/promo_forge/api/docs/</span></a>
+        </div>
+        <div class="category-links">
+            <a href="/chess_statistics/api/docs/" target="_blank" data-i18n="chess_statistics_swagger">📚 Chess
+                statistics
+                API <span>/chess_statistics/api/docs/</span></a>
+        </div>
     </div>
 
     <!-- NPM библиотеки -->
     <div class="category">
-      <h3 class="category-title" data-i18n="category_npm">📦 NPM библиотеки</h3>
-      <div class="category-links">
-        <div class="library-group">
-          <div class="library-group-title" data-i18n="chalysh_ui_title">🧩 Chalysh UI</div>
-          <div class="library-links">
-            <a href="https://www.npmjs.com/package/chalysh-ui" target="_blank" data-i18n="chalysh_ui_package">📦 Пакет <span>npmjs.com/package/chalysh-ui</span></a>
-            <a href="/chalysh-ui" target="_blank" data-i18n="chalysh_ui_demo">🎨 Демо <span>/chalysh-ui</span></a>
-          </div>
+        <h3 class="category-title" data-i18n="category_npm">📦 NPM библиотеки</h3>
+        <div class="category-links">
+            <div class="library-group">
+                <div class="library-group-title" data-i18n="chalysh_ui_title">🧩 Chalysh UI</div>
+                <div class="library-links">
+                    <a href="https://www.npmjs.com/package/chalysh-ui" target="_blank" data-i18n="chalysh_ui_package">📦
+                        Пакет
+                        <span>npmjs.com/package/chalysh-ui</span></a>
+                    <a href="/chalysh-ui" target="_blank" data-i18n="chalysh_ui_demo">🎨 Демо
+                        <span>/chalysh-ui</span></a>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
-  </div>
-  <footer data-i18n="footer">
+</div>
+<footer data-i18n="footer">
     © 2025 DiCh — All rights reserved.
-  </footer>
+</footer>
 
-  <script>
+<script>
     const translations = {
-      ru: {
-        title: 'Мои проекты',
-        category_web: '🌐 Веб проекты',
-        category_npm: '📦 NPM библиотеки',
-        category_bots: '🤖 Боты',
-        category_api: '📡 API Swagger',
-        shop: '🛍️ Магазин',
-        sport_nutrition: '💪 Спортивное питание',
-        admin: '🧭 Админ панель магазина',
-        cv: '💼 Резюме',
-        birthday: '🎉 Бот для поздравлений',
-        birthday_bot: '🎉 Бот для поздравлений',
-        quotes_bot: '💬 Золотые цитаты',
-        shop_bot: '🛒 Бот магазина',
-        magic_player: '🎵 Magic Player',
-        wedding: '💍 Свадебные приглашения',
-        frontend_grade: '📊 Frontend Grade',
-        colleagues: '👥 Коллеги на работе',
-        repairs_accounting: '🧾 Repairs Accounting',
-        chalysh_ui_title: '🧩 Chalysh UI',
-        chalysh_ui_package: '🛍️ Пакет',
-        chalysh_ui_demo: '🪧 Демо',
-        promo_forge: '🚀 Генератор промо кодов',
-        threejs: '🎮 Dream Team (Three.js)',
-        chess_statistics: '♟️ Статистика шахматных партий',
-        promo_forge_swagger: '📚 Генератор промо кодов API',
-        chess_statistics_swagger: '📚 Статистика шахматных партий API',
-        footer: '© 2025 DiCh — Все права защищены.'
-      },
-      en: {
-        title: 'My Projects',
-        category_web: '🌐 Web Projects',
-        category_npm: '📦 NPM Libraries',
-        category_bots: '🤖 Bots',
-        category_api: '📡 API Swagger',
-        shop: '🛍️ Dich Shop',
-        sport_nutrition: '💪 Sport Nutrition',
-        admin: '🧭 Admin Panel DiCh Shop',
-        cv: '💼 CV',
-        birthday: '🎉 Bot for congratulations',
-        birthday_bot: '🎉 Birthday Bot',
-        quotes_bot: '💬 Golden Quotes',
-        shop_bot: '🛒 Shop Bot',
-        magic_player: '🎵 Magic Player',
-        wedding: '💍 Wedding invitations',
-        frontend_grade: '📊 Frontend Grade',
-        colleagues: '👥 Colleagues at work',
-        repairs_accounting: '🧾 Repairs Accounting',
-        chalysh_ui_title: '🧩 Chalysh UI',
-        chalysh_ui_package: '📦 Package',
-        chalysh_ui_demo: '🎨 Demo',
-        promo_forge: '🚀 Promo Forge',
-        threejs: '🎮 Dream Team (Three.js)',
-        chess_statistics: '♟️ Chess statistics',
-        promo_forge_swagger: '📚 Promo Forge API',
-        chess_statistics_swagger: '📚 Chess statistics API',
-        footer: '© 2025 DiCh — All rights reserved.'
-      }
+        ru: {
+            title: 'Мои проекты',
+            category_web: '🌐 Веб проекты',
+            category_npm: '📦 NPM библиотеки',
+            category_bots: '🤖 Боты',
+            category_api: '📡 API Swagger',
+            shop: '🛍️ Магазин',
+            sport_nutrition: '💪 Спортивное питание',
+            admin: '🧭 Админ панель магазина',
+            cv: '💼 Резюме',
+            birthday: '🎉 Бот для поздравлений',
+            birthday_bot: '🎉 Бот для поздравлений',
+            quotes_bot: '💬 Золотые цитаты',
+            shop_bot: '🛒 Бот магазина',
+            magic_player: '🎵 Magic Player',
+            wedding: '💍 Свадебные приглашения',
+            frontend_grade: '📊 Frontend Grade',
+            colleagues: '👥 Коллеги на работе',
+            repairs_accounting: '🧾 Repairs Accounting',
+            chalysh_ui_title: '🧩 Chalysh UI',
+            chalysh_ui_package: '🛍️ Пакет',
+            chalysh_ui_demo: '🪧 Демо',
+            promo_forge: '🚀 Генератор промо кодов',
+            threejs: '🎮 Dream Team (Three.js)',
+            chess_statistics: '♟️ Статистика шахматных партий',
+            promo_forge_swagger: '📚 Генератор промо кодов API',
+            chess_statistics_swagger: '📚 Статистика шахматных партий API',
+            footer: '© 2025 DiCh — Все права защищены.'
+        },
+        en: {
+            title: 'My Projects',
+            category_web: '🌐 Web Projects',
+            category_npm: '📦 NPM Libraries',
+            category_bots: '🤖 Bots',
+            category_api: '📡 API Swagger',
+            shop: '🛍️ Dich Shop',
+            sport_nutrition: '💪 Sport Nutrition',
+            admin: '🧭 Admin Panel DiCh Shop',
+            cv: '💼 CV',
+            birthday: '🎉 Bot for congratulations',
+            birthday_bot: '🎉 Birthday Bot',
+            quotes_bot: '💬 Golden Quotes',
+            shop_bot: '🛒 Shop Bot',
+            magic_player: '🎵 Magic Player',
+            wedding: '💍 Wedding invitations',
+            frontend_grade: '📊 Frontend Grade',
+            colleagues: '👥 Colleagues at work',
+            repairs_accounting: '🧾 Repairs Accounting',
+            chalysh_ui_title: '🧩 Chalysh UI',
+            chalysh_ui_package: '📦 Package',
+            chalysh_ui_demo: '🎨 Demo',
+            promo_forge: '🚀 Promo Forge',
+            threejs: '🎮 Dream Team (Three.js)',
+            chess_statistics: '♟️ Chess statistics',
+            promo_forge_swagger: '📚 Promo Forge API',
+            chess_statistics_swagger: '📚 Chess statistics API',
+            footer: '© 2025 DiCh — All rights reserved.'
+        }
     };
 
     function switchLanguage(lang) {
-      // Сохраняем выбор языка
-      localStorage.setItem('language', lang);
+        // Сохраняем выбор языка
+        localStorage.setItem('language', lang);
 
-      // Обновляем атрибут lang у html
-      document.documentElement.lang = lang;
+        // Обновляем атрибут lang у html
+        document.documentElement.lang = lang;
 
-      // Обновляем активную кнопку
-      document.getElementById('lang-ru').classList.toggle('active', lang === 'ru');
-      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+        // Обновляем активную кнопку
+        document.getElementById('lang-ru').classList.toggle('active', lang === 'ru');
+        document.getElementById('lang-en').classList.toggle('active', lang === 'en');
 
-      // Обновляем все тексты
-      document.querySelectorAll('[data-i18n]').forEach(element => {
-        const key = element.getAttribute('data-i18n');
-        if (translations[lang][key]) {
-          if (element.tagName === 'A') {
-            // Для ссылок обновляем только текст, сохраняя span с путем
-            const span = element.querySelector('span');
-            const path = span ? span.textContent : '';
-            element.innerHTML = translations[lang][key] + (span ? ` <span>${path}</span>` : '');
-          } else if (element.tagName === 'H3' || element.classList.contains('library-group-title')) {
-            // Для заголовков категорий и библиотек
-            element.textContent = translations[lang][key];
-          } else {
-            element.textContent = translations[lang][key];
-          }
-        }
-      });
+        // Обновляем все тексты
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[lang][key]) {
+                if (element.tagName === 'A') {
+                    // Для ссылок обновляем только текст, сохраняя span с путем
+                    const span = element.querySelector('span');
+                    const path = span ? span.textContent : '';
+                    element.innerHTML = translations[lang][key] + (span ? ` <span>${path}</span>` : '');
+                } else if (element.tagName === 'H3' || element.classList.contains('library-group-title')) {
+                    // Для заголовков категорий и библиотек
+                    element.textContent = translations[lang][key];
+                } else {
+                    element.textContent = translations[lang][key];
+                }
+            }
+        });
     }
 
     // Определяем язык браузера
     function getBrowserLanguage() {
-      const lang = navigator.language || navigator.userLanguage || 'ru';
-      // Проверяем, начинается ли язык с 'en' (en, en-US, en-GB и т.д.)
-      return lang.toLowerCase().startsWith('en') ? 'en' : 'ru';
+        const lang = navigator.language || navigator.userLanguage || 'ru';
+        // Проверяем, начинается ли язык с 'en' (en, en-US, en-GB и т.д.)
+        return lang.toLowerCase().startsWith('en') ? 'en' : 'ru';
     }
 
     // Определяем тему системы
     function getSystemTheme() {
-      return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
     }
 
     // Переключаем тему
     function toggleTheme() {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      const systemTheme = getSystemTheme();
-      
-      let newTheme;
-      if (!currentTheme) {
-        // Если тема не установлена, используем противоположную системной
-        newTheme = systemTheme === 'light' ? 'dark' : 'light';
-      } else {
-        // Переключаем между light и dark
-        newTheme = currentTheme === 'light' ? 'dark' : 'light';
-      }
-      
-      setTheme(newTheme);
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const systemTheme = getSystemTheme();
+
+        let newTheme;
+        if (!currentTheme) {
+            // Если тема не установлена, используем противоположную системной
+            newTheme = systemTheme === 'light' ? 'dark' : 'light';
+        } else {
+            // Переключаем между light и dark
+            newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        }
+
+        setTheme(newTheme);
     }
 
     // Устанавливаем тему
     function setTheme(theme) {
-      if (theme === 'auto' || !theme) {
-        document.documentElement.removeAttribute('data-theme');
-        localStorage.removeItem('theme');
-      } else {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-      }
-      
-      // Обновляем иконку кнопки
-      updateThemeIcon();
+        if (theme === 'auto' || !theme) {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.removeItem('theme');
+        } else {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+        }
+
+        // Обновляем иконку кнопки
+        updateThemeIcon();
     }
 
     // Обновляем иконку темы
     function updateThemeIcon() {
-      const themeToggle = document.getElementById('theme-toggle');
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      const systemTheme = getSystemTheme();
-      const activeTheme = currentTheme || systemTheme;
-      
-      themeToggle.textContent = activeTheme === 'light' ? '🌙' : '☀️';
+        const themeToggle = document.getElementById('theme-toggle');
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const systemTheme = getSystemTheme();
+        const activeTheme = currentTheme || systemTheme;
+
+        themeToggle.textContent = activeTheme === 'light' ? '🌙' : '☀️';
     }
 
     // Загружаем сохраненный язык и тему при загрузке страницы
     document.addEventListener('DOMContentLoaded', () => {
-      const savedLang = localStorage.getItem('language') || getBrowserLanguage();
-      switchLanguage(savedLang);
-      
-      // Загружаем сохраненную тему или используем системную
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) {
-        setTheme(savedTheme);
-      } else {
-        // Не устанавливаем data-theme, чтобы использовалась системная тема
-        updateThemeIcon();
-      }
+        const savedLang = localStorage.getItem('language') || getBrowserLanguage();
+        switchLanguage(savedLang);
+
+        // Загружаем сохраненную тему или используем системную
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        } else {
+            // Не устанавливаем data-theme, чтобы использовалась системная тема
+            updateThemeIcon();
+        }
     });
 
     // Слушаем изменения системной темы
     window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => {
-      // Обновляем иконку только если тема не установлена вручную
-      if (!document.documentElement.getAttribute('data-theme')) {
-        updateThemeIcon();
-      }
+        // Обновляем иконку только если тема не установлена вручную
+        if (!document.documentElement.getAttribute('data-theme')) {
+            updateThemeIcon();
+        }
     });
-  </script>
+</script>
 </body>
+
 </html>
