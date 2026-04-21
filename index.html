@@ -123,9 +123,11 @@
             transition: opacity 0.6s ease-out, transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color var(--transition), color var(--transition), border-color var(--transition), box-shadow var(--transition);
         }
 
-        a.animate-on-scroll.is-visible:hover {
-            transform: translateY(-6px) scale(1.02);
-            transition: transform 0.2s ease, background-color var(--transition), color var(--transition), border-color var(--transition), box-shadow var(--transition);
+        @media (hover: hover) {
+            a.animate-on-scroll.is-visible:hover {
+                transform: translateY(-6px) scale(1.02);
+                transition: transform 0.2s ease, background-color var(--transition), color var(--transition), border-color var(--transition), box-shadow var(--transition);
+            }
         }
 
         .library-group.animate-on-scroll {
@@ -136,10 +138,12 @@
             transition: opacity 0.6s ease-out, transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow var(--transition), border-color var(--transition), background-color var(--transition);
         }
 
-        .library-group.animate-on-scroll.is-visible:hover {
-            transform: translateY(-4px) scale(1.01);
-            box-shadow: 0 6px 15px var(--shadow);
-            transition: transform 0.2s ease, box-shadow var(--transition), border-color var(--transition), background-color var(--transition);
+        @media (hover: hover) {
+            .library-group.animate-on-scroll.is-visible:hover {
+                transform: translateY(-4px) scale(1.01);
+                box-shadow: 0 6px 15px var(--shadow);
+                transition: transform 0.2s ease, box-shadow var(--transition), border-color var(--transition), background-color var(--transition);
+            }
         }
 
         @keyframes gradientMove {
@@ -224,10 +228,12 @@
             border: 1px solid var(--border);
         }
 
-        a:hover {
-            background: var(--accent);
-            color: #fff;
-            transform: translateY(-4px);
+        @media (hover: hover) {
+            a:hover {
+                background: var(--accent);
+                color: #fff;
+                transform: translateY(-4px);
+            }
         }
 
         a span {
@@ -244,9 +250,11 @@
             transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), background-color var(--transition);
         }
 
-        .library-group:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px var(--shadow);
+        @media (hover: hover) {
+            .library-group:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 15px var(--shadow);
+            }
         }
 
         .library-group-title {
@@ -273,9 +281,11 @@
             font-size: 0.95rem;
         }
 
-        .library-links a:hover {
-            background: var(--accent);
-            border-color: var(--accent);
+        @media (hover: hover) {
+            .library-links a:hover {
+                background: var(--accent);
+                border-color: var(--accent);
+            }
         }
 
         .language-switcher {
@@ -327,10 +337,12 @@
             height: 34px;
         }
 
-        .theme-switcher button:hover {
-            background: var(--accent);
-            color: #fff;
-            transform: rotate(15deg);
+        @media (hover: hover) {
+            .theme-switcher button:hover {
+                background: var(--accent);
+                color: #fff;
+                transform: rotate(15deg);
+            }
         }
 
         .language-switcher button {
@@ -346,9 +358,11 @@
             font-family: 'Inter', sans-serif;
         }
 
-        .language-switcher button:hover {
-            background: var(--accent);
-            color: #fff;
+        @media (hover: hover) {
+            .language-switcher button:hover {
+                background: var(--accent);
+                color: #fff;
+            }
         }
 
         .language-switcher button.active {
